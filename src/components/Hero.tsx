@@ -105,7 +105,7 @@ const Hero = () => {
                 <div className="absolute inset-2 bg-gradient-to-br from-white to-pink-50 rounded-full flex items-center justify-center shadow-inner">
                   <div className="w-36 h-36 rounded-full overflow-hidden">
                     <img
-                      src="/assets/images/Saniya1.jpg"
+                      src="/public/assets/Saniya1.jpg"
                       alt="Saniya Inamdar"
                       className="w-full h-full object-cover"   /* fills & crops */
                     />

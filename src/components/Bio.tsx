@@ -146,7 +146,7 @@ const Bio = () => {
                     <div className="w-40 h-40 bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 rounded-full mx-auto flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
                       <div className="w-36 h-36 rounded-full overflow-hidden">
                         <img
-                          src="/assets/images/Saniya2.jpg"
+                          src="/public/assets/Saniya2.jpg"
                           alt="Saniya Inamdar"
                           className="w-full h-full object-cover"   /* fills & crops */
                         />

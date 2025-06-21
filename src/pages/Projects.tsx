@@ -68,7 +68,7 @@ const Projects = () => {
       title: 'AI Research Assistant',
       description: 'Assistant to summarize research papers, generate literature reviews, and manage references.',
       categories: ['Machine Learning', 'Web Development'],
-      image: 'https://images.pexels.com/photos/159711/pexels-photo-159711.jpeg',
+      image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg',
       technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
       github: 'https://github.com/CodeFor2001/AI-research-assistant.git'
     }

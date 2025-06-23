@@ -5,7 +5,7 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   // Define all filter categories including 'All'
-  const categories = ['All', 'Web Development', 'Machine Learning'];
+  const categories = ['All', 'Web Development', 'Machine Learning','Kernel Development'];
 
   // Each project can belong to multiple categories
   const projects = [
@@ -31,9 +31,9 @@ const Projects = () => {
       id: 3,
       title: 'Multi-tasking Kernel from Scratch',
       description: 'A kernel written in C that supports multitasking, memory management, and basic I/O.',
-      categories: ['Web Development'],
+      categories: ['Kernel Development'],
       image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-      technologies: ['C', 'GRUB Bootloader', 'NASM'],
+      technologies: ['C', 'NASM'],
       github: 'https://github.com/CodeFor2001/kernel-c.git'
     },
     {

@@ -38,8 +38,8 @@ const Projects = () => {
     },
     {
       id: 8,
-      title: 'COVID Detection on CT-Scan',
-      description: 'Deep learning model to detect COVID-19 infections from chest CT scans with high accuracy.',
+      title: 'TB Detection on CT-Scan',
+      description: 'Deep learning model to detect TB infections from chest CT scans with high accuracy.',
       categories: ['Machine Learning'],
       image: 'https://images.pexels.com/photos/8395815/pexels-photo-8395815.jpeg',
       technologies: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Streamlit', 'OpenCV'],
@@ -56,7 +56,7 @@ const Projects = () => {
     },
     {
       id: 10,
-      title: 'Audio Classification',
+      title: 'Audio Classification: Leakage Detection in Water pipelines',
       description: 'Classifies audio clips into categories using LSTM/CNN models and MFCC features.',
       categories: ['Machine Learning'],
       image: 'https://images.pexels.com/photos/586019/pexels-photo-586019.jpeg',

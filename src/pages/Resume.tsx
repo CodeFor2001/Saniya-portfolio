@@ -32,15 +32,6 @@ const Resume = () => {
                 <span>Download PDF</span>
               </a>
 
-              {/* Toggle Preview Inline */}
-              <button
-                onClick={() => setPreviewOpen(prev => !prev)}
-                className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm text-gray-700 font-semibold px-6 py-3 rounded-full
-                           hover:bg-white/80 transition-all duration-300 border border-pink-200"
-              >
-                <Eye className="h-5 w-5" />
-                <span>{previewOpen ? 'Hide Preview' : 'View Preview'}</span>
-              </button>
             </div>
           </div>
 
@@ -58,16 +49,7 @@ const Resume = () => {
           {/* Inline PDF Preview Section */}
           <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-pink-100">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Resume Preview</h2>
-            {previewOpen ? (
-              <div className="w-full h-[60vh] rounded-lg overflow-hidden shadow-inner">
-                <iframe
-                  // hide default PDF toolbar/sidebar via URL hash params
-                  src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                  title="Résumé preview"
-                  className="w-full h-full border-none"
-                />
-              </div>
-            ) : (
+            
               <div className="flex flex-col items-center justify-center h-[60vh] text-gray-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +64,7 @@ const Resume = () => {
                 <p className="text-lg">PDF preview will be displayed here</p>
                 <p className="text-sm">Click “View Preview” to load the resume</p>
               </div>
-            )}
+           
           </div>
 
         </div>

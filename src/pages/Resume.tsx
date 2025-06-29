@@ -32,6 +32,7 @@ const Resume = () => {
                 <span>Download PDF</span>
               </a>
 
+
             </div>
           </div>
 
@@ -50,21 +51,15 @@ const Resume = () => {
           <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-pink-100">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Resume Preview</h2>
             
-              <div className="flex flex-col items-center justify-center h-[60vh] text-gray-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mb-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 2v6h6" />
-                </svg>
-                <p className="text-lg">PDF preview will be displayed here</p>
-                <p className="text-sm">Click “View Preview” to load the resume</p>
+              <div className="w-full h-[60vh] rounded-lg overflow-hidden shadow-inner">
+                <iframe
+                  // hide default PDF toolbar/sidebar via URL hash params
+                  src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                  title="Résumé preview"
+                  className="w-full h-full border-none"
+                />
               </div>
-           
+            
           </div>
 
         </div>

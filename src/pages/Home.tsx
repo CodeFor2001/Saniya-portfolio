@@ -1,10 +1,11 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import RecognitionPopup from '../components/RecognitionPopup';
+import Recognition from '../components/Recognition';
 import Bio from '../components/Bio';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
-import Recognition from '../components/Recognition';
-import RecognitionPopup from '../components/RecognitionPopup';
+
 const Home = () => {
   return (
     <>

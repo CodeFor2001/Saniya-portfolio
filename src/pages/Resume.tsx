@@ -3,7 +3,7 @@ import { Download, Eye, X as XIcon, Award, Briefcase, GraduationCap, User } from
 
 const Resume = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
-  const pdfUrl = '/Saniya_resume__Copy_.pdf';
+  const pdfUrl = '/SaniyaInamdar_resume.pdf';
 
   return (
     <div className="pt-16 min-h-screen">

@@ -78,6 +78,7 @@ const Projects = () => {
       description: 'A feature extraction method exploration based on in phase matrix profile vs HFD for EEG signal classification using MRHydra and HC2 models.',
       categories: ['Machine Learning'],
       image: 'https://images.pexels.com/photos/8879116/pexels-photo-8879116.jpeg',
+
       technologies: ['Python', 'scikit-learn', 'MRHydra', 'HC2', 'aeon-toolkit'],
       github: 'https://github.com/CodeFor2001/In-Phase-Matrix-Profile-for-Major-Depressive-Disorder.git'
     },

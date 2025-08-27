@@ -19,7 +19,7 @@ const Projects = () => {
       github: 'https://github.com/CodeFor2001/AI-recipe-generator.git'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Sentiment Analysis Tool',
       description: 'Hands-on PyTorch notebooks that build BoW, RNN, CNN and Transformer models to classify movie-review sentiment.',
       categories: ['Machine Learning'],

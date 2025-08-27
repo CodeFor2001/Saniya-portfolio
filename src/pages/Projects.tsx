@@ -78,7 +78,7 @@ const Projects = () => {
       description: 'A feature extraction method exploration based on in phase matrix profile vs HFD for EEG signal classification using MRHydra and HC2 models.',
       categories: ['Machine Learning'],
       image: 'https://images.pexels.com/photos/8879116/pexels-photo-8879116.jpeg',
-      technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
+      technologies: ['Python', 'scikit-learn', 'MRHydra', 'HC2', 'aeon-toolkit'],
       github: 'https://github.com/CodeFor2001/In-Phase-Matrix-Profile-for-Major-Depressive-Disorder.git'
     },
     {
@@ -87,9 +87,18 @@ const Projects = () => {
       description: 'A custom IDE for agentic AI development which edits your code in real time locally.',
       categories: ['Machine Learning','Agentic AI'],
       image: 'https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg',
-      technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
+      technologies: ['Python', 'OpenAI'],
       github: 'https://github.com/CodeFor2001/Custom-Agentic-IDE.git'
     },
+    {
+      id: 5,
+      title: 'AI outfit stylist',
+      description: 'An AI stylist that suggests outfits based on your wardrobe, occasion, personal style and colours. It also suggests outfits from Pinterest. And if you dont have a particular clothing it\'ll also give you links from where you can buy Italic.(work in progress)',
+    categories: ['Machine Learning','Agentic AI'],
+      image: 'https://images.pexels.com/photos/5418896/pexels-photo-5418896.jpeg',
+      technologies: ['Python','OpenAI', 'React'],
+      github: 'https://github.com/CodeFor2001/AI-Fashion-Assistant.git'}
+      
   ];
 
   // Filter by selected category, or show all

@@ -5,7 +5,7 @@ const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   // Define all filter categories including 'All'
-  const categories = ['All', 'Web Development', 'Machine Learning','Kernel Development'];
+  const categories = ['All', 'Web Development', 'Machine Learning','Kernel Development', 'Agentic AI'];
 
   // Each project can belong to multiple categories
   const projects = [
@@ -64,14 +64,32 @@ const Projects = () => {
       github: 'https://github.com/CodeFor2001/pipeline-leakage-detection.git'
     },
     {
-      id: 1,
+      id: 4,
       title: 'AI Research Assistant',
       description: 'Assistant to summarize research papers, generate literature reviews, and manage references.',
-      categories: ['Machine Learning', 'Web Development'],
+      categories: ['Machine Learning', 'Web Development', 'Agentic AI'],
       image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg',
       technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
       github: 'https://github.com/CodeFor2001/AI-research-assistant.git'
-    }
+    },
+    {
+      id: 1,
+      title: 'Matrix Profile based feature Extraction for EEG signal classification',
+      description: 'A feature extraction method exploration based on in phase matrix profile vs HFD for EEG signal classification using MRHydra and HC2 models.',
+      categories: ['Machine Learning'],
+      image: 'https://images.pexels.com/photos/8879116/pexels-photo-8879116.jpeg',
+      technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
+      github: 'https://github.com/CodeFor2001/In-Phase-Matrix-Profile-for-Major-Depressive-Disorder.git'
+    },
+    {
+      id: 6,
+      title: 'Custom Agentic IDE',
+      description: 'A custom IDE for agentic AI development which edits your code in real time locally.',
+      categories: ['Machine Learning','Agentic AI'],
+      image: 'https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg',
+      technologies: ['Python', 'LangChain', 'MLflow', 'OpenAI', 'Pinecone', 'FastAPI'],
+      github: 'https://github.com/CodeFor2001/Custom-Agentic-IDE.git'
+    },
   ];
 
   // Filter by selected category, or show all

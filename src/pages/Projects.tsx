@@ -10,6 +10,15 @@ const Projects = () => {
   // Each project can belong to multiple categories
   const projects = [
     {
+      id: 11,
+      title: 'Agent Command Center',
+      description: 'An AI fleet observability platform for monitoring and governing enterprise-scale AI agent deployments. Features real-time step tracing via SSE, an LLM-as-judge pipeline for silent failure detection, human-in-the-loop escalation workflows, and a conversational analytics agent for natural language ROI queries.',
+      categories: ['Agentic AI', 'Web Development'],
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['FastAPI', 'Claude API', 'React 18', 'Tailwind CSS', 'SQLite', 'SSE', 'asyncio', 'Recharts'],
+      github: 'https://github.com/CodeFor2001'
+    },
+    {
       id: 1,
       title: 'Matrix Profile based feature Extraction for EEG signal classification',
       description: 'A feature extraction method exploration based on in phase matrix profile vs HFD for EEG signal classification using MRHydra and HC2 models.',

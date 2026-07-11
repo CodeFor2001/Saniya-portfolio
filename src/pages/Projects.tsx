@@ -16,7 +16,7 @@ const Projects = () => {
       categories: ['Agentic AI', 'Web Development'],
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['FastAPI', 'Claude API', 'React 18', 'Tailwind CSS', 'SQLite', 'SSE', 'asyncio', 'Recharts'],
-      github: 'https://github.com/CodeFor2001'
+      github: 'https://github.com/CodeFor2001/agent-command-center'
     },
     {
       id: 1,

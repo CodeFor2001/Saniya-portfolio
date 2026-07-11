@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Zap, House, FolderOpen, FileText, Github, Linkedin, Mail } from 'lucide-react';
+import { Zap, Home, FolderOpen, FileText, Github, Linkedin, Mail } from 'lucide-react';
 
 const PAGES = [
-  { to: '/',         icon: House,      label: 'Home'     },
+  { to: '/',         icon: Home,       label: 'Home'     },
   { to: '/projects', icon: FolderOpen, label: 'Projects' },
   { to: '/resume',   icon: FileText,   label: 'Resume'   },
 ];

@@ -1,224 +1,128 @@
-import React, { useEffect, useState } from 'react';
-import { Sparkles, Code, Cpu, Brain, Heart, Star, Zap, Palette, Brush, Camera } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Github, Linkedin, Brain, Cpu, Code } from 'lucide-react';
 
-const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const EXPERTISE = [
+  { icon: Brain, label: 'Machine Learning', color: 'text-rose-400',   border: 'border-rose-400/30',   bg: 'bg-rose-400/8' },
+  { icon: Cpu,   label: 'Agentic AI',       color: 'text-violet-400', border: 'border-violet-400/30', bg: 'bg-violet-400/8' },
+  { icon: Code,  label: 'Full-Stack Dev',   color: 'text-ice-400',    border: 'border-ice-400/30',    bg: 'bg-ice-400/8' },
+];
+
+export default function Hero() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const t = setTimeout(() => setVisible(true), 80);
+    return () => clearTimeout(t);
   }, []);
 
-  const expertiseAreas = [
-    { icon: Brain, label: 'Machine Learning', color: 'text-pink-500', bgGradient: 'from-pink-400/20 to-rose-400/20' },
-    { icon: Cpu, label: 'Agentic AI', color: 'text-blue-500', bgGradient: 'from-blue-400/20 to-cyan-400/20' },
-    { icon: Code, label: 'Full-Stack Dev', color: 'text-purple-500', bgGradient: 'from-purple-400/20 to-indigo-400/20' },
-  ];
-
-  const FloatingArtElement = ({ children, delay = 0, className = "", duration = "6s" }) => (
-    <div 
-      className={`absolute animate-bounce ${className}`}
-      style={{ 
-        animationDelay: `${delay}s`,
-        animationDuration: duration,
-        animationIterationCount: 'infinite'
-      }}
-    >
-      {children}
-    </div>
-  );
-
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      {/* Interactive Mouse Trail */}
-      <div 
-        className="fixed w-6 h-6 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full opacity-30 pointer-events-none z-50 transition-all duration-300 ease-out"
-        style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
-          transform: 'scale(0.8)',
-        }}
+    <section className="relative min-h-screen flex items-center circuit-bg overflow-hidden">
+
+      {/* Atmospheric orbs — GPU-composited, no JS */}
+      <div
+        className="absolute top-[-15%] right-[-8%] w-[600px] h-[600px] rounded-full pointer-events-none animate-drift"
+        style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%)', willChange: 'transform' }}
+      />
+      <div
+        className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none animate-drift-r"
+        style={{ background: 'radial-gradient(circle, rgba(232,121,160,0.10) 0%, transparent 70%)', willChange: 'transform' }}
       />
 
-      {/* Artistic Floating Elements */}
-      <FloatingArtElement delay={0} className="top-20 left-10 text-pink-400" duration="4s">
-        <div className="relative">
-          <Palette className="h-10 w-10" />
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
-        </div>
-      </FloatingArtElement>
-      
-      <FloatingArtElement delay={1} className="top-32 right-20 text-purple-400" duration="5s">
-        <Brush className="h-8 w-8 transform rotate-45" />
-      </FloatingArtElement>
-      
-      <FloatingArtElement delay={2} className="bottom-40 left-20 text-blue-400" duration="6s">
-        <Camera className="h-9 w-9" />
-      </FloatingArtElement>
-      
-      <FloatingArtElement delay={0.5} className="top-40 right-10 text-pink-300" duration="7s">
-        <div className="flex space-x-1">
-          <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-          <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-      </FloatingArtElement>
-      
-      <FloatingArtElement delay={1.5} className="bottom-32 right-32 text-purple-300" duration="8s">
-        <div className="relative">
-          <Star className="h-7 w-7" />
-          <Sparkles className="absolute -top-2 -right-2 h-4 w-4 text-yellow-400 animate-spin" style={{ animationDuration: '3s' }} />
-        </div>
-      </FloatingArtElement>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-      {/* Artistic Background Patterns */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-pink-200/40 to-transparent rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-purple-200/40 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-10 w-48 h-48 bg-gradient-to-br from-blue-200/40 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-      </div>
-
-      {/* Geometric Art Shapes */}
-      <div className="absolute top-20 right-1/4 w-16 h-16 border-2 border-pink-300/50 rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
-      <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-300/50 to-blue-300/50 transform rotate-12 animate-pulse"></div>
-      <div className="absolute top-1/3 right-10 w-8 h-8 bg-gradient-to-r from-pink-400/60 to-purple-400/60 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
-
-      <div className="max-w-5xl mx-auto text-center relative z-10">
+        {/* ── Left: text ── */}
         <div
-          className={`transform transition-all duration-1500 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-          }`}
+          className="space-y-8"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
         >
-          {/* Artistic Header */}
-          <div className="mb-12 relative">
-            <div className="relative mb-8">
-              <div className="w-40 h-40 mx-auto mb-8 relative group">
-                {/* Artistic Avatar Container */}
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 rounded-full animate-pulse group-hover:animate-spin transition-all duration-1000"></div>
-                <div className="absolute inset-2 bg-gradient-to-br from-white to-pink-50 rounded-full flex items-center justify-center shadow-inner">
-                  <div className="w-36 h-36 rounded-full overflow-hidden">
-                    <img
-                      src="/Saniya1.jpg"
-                      alt="Saniya Inamdar"
-                      className="w-full h-full object-cover"   /* fills & crops */
-                    />
-                  </div>
-                </div>
-                
-                {/* Floating Art Icons */}
-                <Sparkles className="absolute -top-3 -right-3 h-8 w-8 text-pink-400 animate-pulse" />
-                <Palette className="absolute -bottom-2 -left-3 h-6 w-6 text-purple-500 animate-pulse" style={{ animationDelay: '1s' }} />
-                <Brush className="absolute top-2 -right-6 h-5 w-5 text-blue-500 animate-pulse" style={{ animationDelay: '2s' }} />
-                <Heart className="absolute -bottom-1 right-2 h-4 w-4 text-pink-600 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                
-                {/* Artistic Rings */}
-                <div className="absolute -inset-4 border-2 border-pink-200/50 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
-                <div className="absolute -inset-6 border border-purple-200/30 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
-              </div>
-            </div>
-
-            {/* Artistic Title */}
-            <div className="relative">
-              <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-6 relative">
-                Hello, I'm Saniya
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center animate-bounce">
-                  <span className="text-lg">✨</span>
-                </div>
-              </h1>
-              
-              {/* Artistic Subtitle with Creative Typography */}
-              <div className="relative mb-8">
-                <p className="text-2xl md:text-3xl text-gray-600 font-light mb-2">
-                  Software Engineer · <span className="text-pink-500 font-semibold">AI & ML</span> · <span className="text-purple-500 font-semibold">Agentic Systems</span>
-                </p>
-                <p className="text-lg md:text-xl text-gray-500 italic">
-                  building intelligent systems from the ground up — kernels to agent fleets
-                </p>
-                
-                {/* Decorative Line Art */}
-                <div className="flex justify-center mt-4 space-x-2">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-pink-400 animate-pulse"></div>
-                  <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce"></div>
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-transparent animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
-              </div>
-            </div>
+          <div className="space-y-1">
+            <p className="mono-label">[ Software Engineer · AI & ML ]</p>
+            <h1 className="font-display text-6xl md:text-7xl font-semibold text-ink-100 leading-tight tracking-tight mt-3">
+              Hello, I'm<br />
+              <span className="gradient-text italic">Saniya</span>
+            </h1>
           </div>
 
-          {/* Artistic Expertise Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {expertiseAreas.map((area, index) => {
-              const Icon = area.icon;
-              return (
-                <div
-                  key={area.label}
-                  className={`transform transition-all duration-1000 delay-${index * 300} ${
-                    isVisible ? 'translate-y-0 opacity-100 rotate-0' : 'translate-y-12 opacity-0 rotate-6'
-                  }`}
-                >
-                  <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/90 transition-all duration-500 hover:scale-110 hover:shadow-2xl border border-pink-100 relative overflow-hidden">
-                    {/* Artistic Background Pattern */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${area.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pink-100/30 to-purple-100/30 rounded-full -translate-y-12 translate-x-12 group-hover:scale-150 transition-transform duration-500"></div>
-                    
-                    {/* Floating Particles */}
-                    <div className="absolute top-4 left-4 w-2 h-2 bg-pink-300 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-500"></div>
-                    <div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-500" style={{ animationDelay: '0.5s' }}></div>
-                    
-                    <Icon className={`h-14 w-14 ${area.color} mx-auto mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 relative z-10`} />
-                    <h3 className="text-xl font-bold text-gray-800 relative z-10 group-hover:text-gray-900 transition-colors duration-300">{area.label}</h3>
-                    
-                    {/* Artistic Border */}
-                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-pink-200/50 rounded-3xl transition-all duration-500"></div>
-                  </div>
-                </div>
-              );
-            })}
+          <p className="text-ink-400 text-lg leading-relaxed max-w-md">
+            I build intelligent systems — from ML-powered computer vision to agentic AI platforms that govern enterprise agent fleets.
+            Low-level to high-level, kernels to LLMs.
+          </p>
+
+          {/* Expertise chips */}
+          <div className="flex flex-wrap gap-3">
+            {EXPERTISE.map(({ icon: Icon, label, color, border, bg }) => (
+              <div
+                key={label}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl border ${border} ${bg} transition-all duration-200 hover:scale-105`}
+              >
+                <Icon size={14} className={color} />
+                <span className={`text-sm font-medium ${color}`}>{label}</span>
+              </div>
+            ))}
           </div>
 
-          {/* Artistic Description */}
-          <div
-            className={`transform transition-all duration-1000 delay-1000 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-            }`}
-          >
-            <div className="relative max-w-3xl mx-auto">
-              {/* Decorative Quote Marks */}
-              <div className="absolute -left-8 -top-4 text-6xl text-pink-200 font-serif">"</div>
-              <div className="absolute -right-8 -bottom-4 text-6xl text-purple-200 font-serif">"</div>
-              
-              {/* Artistic Text */}
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-pink-100 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400"></div>
-                
-                <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                  I build <span className="text-pink-500 font-semibold">intelligent systems</span> that solve real problems — from ML-powered computer vision to <span className="text-purple-500 font-semibold">agentic AI platforms</span> that monitor enterprise agent fleets.
-                  I've written multitasking kernels in C and trained transformers in PyTorch, and I love finding the thread that connects <span className="text-blue-500 font-semibold">low-level systems thinking</span> with high-level intelligence.
-                </p>
-                
-                {/* Artistic Signature */}
-                <div className="flex justify-end mt-4">
-                  <div className="flex items-center space-x-2 text-gray-500 italic">
-                    <Brush className="h-4 w-4" />
-                    <span className="text-sm">- Saniya</span>
-                  </div>
-                </div>
-              </div>
+          {/* CTA */}
+          <div className="flex items-center gap-4 pt-2">
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-400 to-violet-500 text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity shadow-glow-rose"
+            >
+              View Projects <ArrowRight size={16} />
+            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://github.com/CodeFor2001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-violet-400 transition-colors"
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/saniya-inamdar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-rose-400 transition-colors"
+              >
+                <Linkedin size={18} />
+              </a>
             </div>
           </div>
         </div>
+
+        {/* ── Right: profile image ── */}
+        <div
+          className="flex justify-center lg:justify-end"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s' }}
+        >
+          <div className="relative">
+            {/* Outer glow ring */}
+            <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-rose-400/20 to-violet-500/20 blur-xl animate-glow" />
+            {/* Violet ring */}
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-rose-400 to-violet-500 p-[2px]">
+              <div className="w-full h-full rounded-full bg-arc-base" />
+            </div>
+            {/* Photo */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden">
+              <img
+                src="/Saniya1.jpg"
+                alt="Saniya Inamdar"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Floating badge */}
+            <div className="absolute -bottom-3 -right-3 arc-card px-3 py-2 flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-glow" />
+              <span className="font-mono text-xs text-ink-200">Available</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #060311)' }} />
     </section>
   );
-};
-
-export default Hero;
+}

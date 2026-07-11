@@ -1,185 +1,119 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Heart, Star, Coffee, Sparkles, Code2, Palette, Brush, Camera, Music, BookOpen } from 'lucide-react';
+import { Terminal, Sparkles, Palette, Music, BookOpen, Coffee } from 'lucide-react';
 
-const Bio = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+const INTERESTS = [
+  { icon: Terminal, label: 'Agentic AI',    color: 'text-violet-400' },
+  { icon: Sparkles, label: 'Always learning', color: 'text-rose-400'   },
+  { icon: Palette,  label: 'Knife painting', color: 'text-amber-400'  },
+  { icon: Coffee,   label: 'Food explorer', color: 'text-ice-400'     },
+  { icon: Music,    label: 'Music',         color: 'text-violet-300'  },
+  { icon: BookOpen, label: 'Research',      color: 'text-rose-300'    },
+];
+
+export default function Bio() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
-  const artisticInterests = [
-    { icon: Heart, label: 'Love for code', color: 'text-pink-500' },
-    { icon: Star, label: 'Always learning', color: 'text-yellow-500' },
-    { icon: Palette, label: 'Knife painting', color: 'text-purple-500' },
-    { icon: Coffee, label: 'Food explorer', color: 'text-amber-600' },
-    { icon: Music, label: 'Music', color: 'text-blue-500' },
-    { icon: BookOpen, label: 'Agentic AI', color: 'text-green-500' },
-  ];
-
   return (
-    <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Artistic Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-pink-300 to-transparent rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-purple-300 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-blue-300 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-      </div>
+    <section ref={ref} className="py-24 px-6 relative overflow-hidden">
+      {/* Subtle orb */}
+      <div className="absolute top-1/2 right-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 70%)' }} />
 
-      {/* Floating Art Elements */}
-      <div className="absolute top-20 right-1/4 w-16 h-16 border-2 border-pink-200/50 rounded-full animate-spin" style={{ animationDuration: '15s' }}></div>
-      <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-200/50 to-blue-200/50 transform rotate-45 animate-pulse"></div>
-      
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div
-          className={`transform transition-all duration-1000 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className="mb-14"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'opacity 0.7s, transform 0.7s' }}
         >
-          {/* Artistic Header */}
-          <div className="text-center mb-16 relative">
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8">
-              <div className="flex space-x-2">
-                <Sparkles className="h-6 w-6 text-pink-300 animate-pulse" />
-                <Brush className="h-6 w-6 text-purple-300 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <Palette className="h-6 w-6 text-blue-300 animate-pulse" style={{ animationDelay: '1s' }} />
-              </div>
+          <p className="mono-label mb-3">[ 01 / About ]</p>
+          <h2 className="font-display text-5xl font-semibold text-ink-100">About Me</h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Text */}
+          <div
+            className="space-y-6"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'opacity 0.7s 0.1s, transform 0.7s 0.1s' }}
+          >
+            <div className="arc-card p-6 border-l-2 border-rose-400">
+              <p className="text-ink-200 leading-relaxed text-[0.95rem]">
+                I'm a <span className="text-rose-400 font-semibold">Software Engineer</span> with a background spanning machine learning research,
+                backend systems, and agentic AI. I've built everything from a{' '}
+                <span className="text-violet-400 font-semibold">multitasking kernel in C</span> to LLM-orchestrated agent fleets —
+                and I love finding the thread that connects low-level systems thinking with{' '}
+                <span className="text-ice-400 font-semibold">high-level intelligence</span>.
+              </p>
             </div>
-            
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-6 relative">
-              About Me
-              <div className="absolute -top-2 -right-8 w-6 h-6 bg-yellow-300 rounded-full flex items-center justify-center animate-bounce">
-                <span className="text-sm">🎨</span>
-              </div>
-            </h2>
-            
-            <div className="flex justify-center items-center space-x-4 mb-4">
-              <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-pink-400 animate-pulse"></div>
-              <div className="w-3 h-3 bg-pink-400 rounded-full animate-bounce"></div>
-              <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full"></div>
-              <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-purple-400 to-transparent animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+            <div className="arc-card p-6 border-l-2 border-violet-500">
+              <p className="text-ink-200 leading-relaxed text-[0.95rem]">
+                Outside of work, I'm exploring the frontier of{' '}
+                <span className="text-violet-400 font-semibold">agentic AI</span>, picking up knife painting
+                (yes, with actual palette knives), or building something I've never tried before.
+                I was <span className="text-rose-400 font-semibold">featured in the press</span> for launching an AI-powered
+                food safety app — and that curiosity to solve real problems hasn't slowed down since.
+              </p>
+            </div>
+
+            {/* Interest chips */}
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              {INTERESTS.map(({ icon: Icon, label, color }) => (
+                <div
+                  key={label}
+                  className="arc-card flex items-center gap-3 px-4 py-3 hover:bg-arc-hover transition-colors cursor-default"
+                >
+                  <Icon size={15} className={color} />
+                  <span className="text-sm text-ink-200 font-medium">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Artistic Text Section */}
-            <div className="space-y-8 relative">
-              {/* Decorative Quote */}
-              <div className="absolute -left-8 -top-4 text-8xl text-pink-100 font-serif opacity-50">"</div>
-              
-              <div className="relative z-10 space-y-6">
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border-l-4 border-pink-400 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-pink-100/30 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
-                  <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                    I'm a <span className="text-pink-500 font-semibold">Software Engineer</span> with a background spanning machine learning research, backend systems, and agentic AI.
-                    I've built everything from a <span className="text-purple-500 font-semibold">multitasking kernel in C</span> to LLM-orchestrated agent fleets — and I love finding the thread that connects low-level systems thinking with <span className="text-blue-500 font-semibold">high-level intelligence</span>.
-                  </p>
-                </div>
-
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border-l-4 border-purple-400 relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-br from-purple-100/30 to-transparent rounded-full translate-y-8 -translate-x-8"></div>
-                  <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                    Outside of work, I'm exploring the frontier of <span className="text-purple-500 font-semibold">agentic AI</span>, picking up knife painting (with actual palette knives), or building something I've never tried before.
-                    I was <span className="text-blue-500 font-semibold">featured in the press</span> for launching an AI-powered food safety app — and that curiosity to solve real problems hasn't slowed down since.
-                  </p>
+          {/* Profile card */}
+          <div
+            className="flex justify-center lg:justify-end"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'opacity 0.7s 0.2s, transform 0.7s 0.2s' }}
+          >
+            <div className="arc-card p-8 max-w-xs w-full text-center space-y-6">
+              {/* Photo */}
+              <div className="relative mx-auto w-36 h-36">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-400 to-violet-500 blur-md opacity-40 animate-glow" />
+                <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-violet-500/40">
+                  <img src="/Saniya2.jpg" alt="Saniya Inamdar" className="w-full h-full object-cover" />
                 </div>
               </div>
 
-              {/* Artistic Interests Grid */}
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                {artisticInterests.map((interest, index) => {
-                  const Icon = interest.icon;
-                  return (
-                    <div
-                      key={interest.label}
-                      className="group bg-white/60 backdrop-blur-sm rounded-xl p-4 hover:bg-white/80 transition-all duration-300 hover:scale-105 border border-pink-100 relative overflow-hidden"
-                    >
-                      <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-pink-100/20 to-purple-100/20 rounded-full -translate-y-6 translate-x-6 group-hover:scale-150 transition-transform duration-300"></div>
-                      <div className="flex items-center space-x-3 relative z-10">
-                        <Icon className={`h-5 w-5 ${interest.color} group-hover:scale-110 transition-transform duration-300`} />
-                        <span className="text-sm text-gray-700 font-medium">{interest.label}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="space-y-1">
+                <h3 className="font-display text-2xl font-semibold text-ink-100">Saniya Inamdar</h3>
+                <p className="text-rose-400 font-medium text-sm">Software Engineer · AI & ML</p>
               </div>
-            </div>
 
-            {/* Artistic Profile Card */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 rounded-3xl p-1 relative group">
-                {/* Floating Art Icons */}
-                <Code2 className="absolute -top-4 -left-4 h-8 w-8 text-pink-400 animate-bounce" />
-                <Palette className="absolute -top-3 -right-5 h-7 w-7 text-purple-400 animate-bounce" style={{ animationDelay: '1s' }} />
-                <Camera className="absolute -bottom-3 -left-3 h-6 w-6 text-blue-400 animate-bounce" style={{ animationDelay: '2s' }} />
-                <Brush className="absolute -bottom-2 -right-4 h-5 w-5 text-pink-500 animate-bounce" style={{ animationDelay: '0.5s' }} />
-                
-                {/* Artistic Rings */}
-                <div className="absolute -inset-4 border-2 border-pink-200/30 rounded-full animate-ping" style={{ animationDuration: '4s' }}></div>
-                <div className="absolute -inset-6 border border-purple-200/20 rounded-full animate-ping" style={{ animationDuration: '5s', animationDelay: '1s' }}></div>
-                
-                <div className="bg-white rounded-3xl p-8 h-full relative overflow-hidden">
-                  {/* Artistic Background Patterns */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100/20 to-purple-100/20 rounded-full -translate-y-16 translate-x-16"></div>
-                  <div className="absolute bottom-0 left-0 w-28 h-28 bg-gradient-to-br from-blue-100/20 to-pink-100/20 rounded-full translate-y-14 -translate-x-14"></div>
-                  <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-gradient-to-br from-purple-100/10 to-blue-100/10 rounded-full transform -translate-x-12 -translate-y-12"></div>
-                  
-                  <div className="text-center space-y-6 relative z-10">
-                    {/* Artistic Avatar */}
-                    <div className="w-40 h-40 bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 rounded-full mx-auto flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
-                      <div className="w-36 h-36 rounded-full overflow-hidden">
-                        <img
-                          src="/Saniya2.jpg"
-                          alt="Saniya Inamdar"
-                          className="w-full h-full object-cover"   /* fills & crops */
-                        />
-                      </div>
-                      
-                      {/* Floating Sparkles */}
-                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center animate-pulse">
-                        <span className="text-lg">✨</span>
-                      </div>
-                      <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '1s' }}>
-                        <span className="text-sm">💖</span>
-                      </div>
-                      <div className="absolute top-2 -left-4 w-5 h-5 bg-purple-400 rounded-full flex items-center justify-center animate-pulse" style={{ animationDelay: '2s' }}>
-                        <span className="text-xs">🎨</span>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-3xl font-bold text-gray-800 mb-2">Saniya Inamdar</h3>
-                      <p className="text-pink-600 font-semibold text-lg">Software Engineer · AI & ML</p>
-                      <p className="text-gray-600 text-sm mt-3 italic">
-                        "From kernels to agent fleets — curiosity is the constant"
-                      </p>
-                      
-                      {/* Artistic Signature */}
-                      <div className="flex justify-center mt-4">
-                        <div className="flex items-center space-x-2 text-gray-400">
-                          <div className="w-8 h-0.5 bg-gradient-to-r from-pink-300 to-purple-300"></div>
-                          <Brush className="h-4 w-4" />
-                          <div className="w-8 h-0.5 bg-gradient-to-r from-purple-300 to-blue-300"></div>
-                        </div>
-                      </div>
-                    </div>
+              <p className="font-mono text-xs text-ink-400 italic leading-relaxed border-t border-arc-border pt-4">
+                "From kernels to agent fleets —<br />curiosity is the constant"
+              </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-3 text-center border-t border-arc-border pt-4">
+                {[
+                  { value: '3+', label: 'Years exp' },
+                  { value: '10+', label: 'Projects' },
+                  { value: '1', label: 'Press feature' },
+                ].map(({ value, label }) => (
+                  <div key={label}>
+                    <p className="font-display text-xl font-semibold gradient-text-rv">{value}</p>
+                    <p className="text-xs text-ink-400 mt-0.5">{label}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -187,6 +121,4 @@ const Bio = () => {
       </div>
     </section>
   );
-};
-
-export default Bio;
+}

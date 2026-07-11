@@ -120,30 +120,30 @@ const Projects = () => {
       : projects.filter((project) => project.categories.includes(selectedCategory));
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-16 min-h-screen circuit-bg">
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-6">
+          <div className="mb-12">
+            <p className="mono-label mb-3">[ 03 / Work ]</p>
+            <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-100 mb-4">
               My Projects
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full mb-6"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A collection of projects that showcase my passion for creating innovative solutions
+            <p className="text-ink-400 max-w-xl">
+              A collection of things I've built — spanning ML research, systems programming, and agentic AI.
             </p>
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap gap-3 mb-10">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-5 py-2 rounded-xl font-mono text-xs tracking-wider uppercase font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-pink-400 to-purple-400 text-white shadow-lg'
-                    : 'bg-white/60 backdrop-blur-sm text-gray-600 hover:bg-white/80 border border-pink-100'
+                    ? 'bg-gradient-to-r from-rose-400 to-violet-500 text-white shadow-glow-violet'
+                    : 'arc-card text-ink-400 hover:text-ink-100 hover:border-violet-400/40'
                 }`}
               >
                 {category}
@@ -152,64 +152,52 @@ const Projects = () => {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="group bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-lg border border-pink-100"
+                className="arc-card group overflow-hidden hover:scale-[1.02] transition-transform duration-300"
               >
                 {/* Image */}
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden h-44">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  {/* Multi-category badges */}
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0C0820 0%, transparent 60%)' }} />
+                  {/* Category badges on image */}
+                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                     {project.categories.map((cat) => (
-                      <span
-                        key={cat}
-                        className="text-sm font-medium text-pink-600 bg-pink-50 px-3 py-1 rounded-full"
-                      >
+                      <span key={cat} className="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-md bg-arc-base/80 border border-violet-400/30 text-violet-300">
                         {cat}
                       </span>
                     ))}
                   </div>
+                </div>
 
-                  {/* Title & Description */}
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+                {/* Content */}
+                <div className="p-5 space-y-3">
+                  <h3 className="font-display text-lg font-semibold text-ink-100 leading-snug">{project.title}</h3>
+                  <p className="text-ink-400 text-sm leading-relaxed line-clamp-3">{project.description}</p>
 
-                  {/* Technologies 
-
-*/}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  {/* Tech chips */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full"
-                      >
-                        {tech}
-                      </span>
+                      <span key={tech} className="skill-chip text-[11px]">{tech}</span>
                     ))}
                   </div>
 
-                  {/* Code Link */}
-                  <div className="flex space-x-4">
+                  {/* Code link */}
+                  <div className="pt-2 border-t border-arc-border">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors duration-300"
+                      className="inline-flex items-center gap-1.5 text-violet-400 hover:text-rose-400 transition-colors text-sm font-medium"
                     >
-                      <Github className="h-5 w-5" />
-                      <span className="text-sm font-medium">Code</span>
+                      <Github className="h-4 w-4" />
+                      View Code
                     </a>
                   </div>
                 </div>
@@ -217,24 +205,20 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* All Mini Personal Projects Card */}
-          <div className="flex justify-center mt-12">
-            <div className="group w-full sm:w-1/2 md:w-1/3 bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-lg border border-pink-100">
-              <a
-                href="https://github.com/CodeFor2001"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-6 text-center"
-              >
-                <div className="flex items-center justify-center space-x-3">
-                  <Github className="h-6 w-6 text-gray-600" />
-                  <span className="text-lg font-semibold text-gray-800">All Mini Personal Projects</span>
-                </div>
-                <p className="text-gray-600 text-sm mt-2">
-                  Explore all my side and mini projects on my GitHub profile.
-                </p>
-              </a>
-            </div>
+          {/* GitHub profile card */}
+          <div className="flex justify-center mt-10">
+            <a
+              href="https://github.com/CodeFor2001"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="arc-card group flex items-center gap-4 px-8 py-5 hover:bg-arc-hover transition-colors hover:border-violet-400/40"
+            >
+              <Github className="h-6 w-6 text-ink-400 group-hover:text-violet-400 transition-colors" />
+              <div>
+                <p className="text-ink-100 font-semibold">All Mini Personal Projects</p>
+                <p className="text-ink-400 text-sm">Explore everything on GitHub</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>

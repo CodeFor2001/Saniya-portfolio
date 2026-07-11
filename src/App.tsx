@@ -8,7 +8,7 @@ import Resume from './pages/Resume';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+      <div className="min-h-screen bg-arc-base">
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />

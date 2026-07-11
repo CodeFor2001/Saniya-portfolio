@@ -1,86 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { X, ExternalLink, Star, Sparkles, Trophy } from 'lucide-react';
+import { X, ExternalLink, Trophy } from 'lucide-react';
 
-const RecognitionPopup = () => {
+export default function RecognitionPopup() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show popup after 2 seconds
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 2000);
-
+    const timer = setTimeout(() => setIsVisible(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="relative bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl animate-fadeIn">
-        {/* Close Button */}
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div
+        className="arc-card max-w-sm w-full p-7 space-y-5 relative"
+        style={{ animation: 'fadeUp 0.4s ease-out forwards' }}
+      >
+        {/* Close */}
         <button
           onClick={() => setIsVisible(false)}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors duration-300"
+          className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center text-ink-400 hover:text-ink-100 hover:bg-arc-hover transition-colors"
         >
-          <X className="h-5 w-5 text-gray-500" />
+          <X size={16} />
         </button>
 
-        {/* Floating Icons */}
-        <Trophy className="absolute -top-3 -left-3 h-8 w-8 text-yellow-400 animate-bounce" />
-        <Star className="absolute -top-2 -right-8 h-6 w-6 text-pink-400 animate-pulse" />
-        <Sparkles className="absolute -bottom-3 -right-3 h-7 w-7 text-purple-400 animate-spin" style={{ animationDuration: '3s' }} />
-
-        {/* Content */}
-        <div className="text-center space-y-6">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-100 to-pink-100 rounded-full px-4 py-2 border-2 border-yellow-200">
-            <Trophy className="h-4 w-4 text-yellow-600" />
-            <span className="text-yellow-700 font-semibold text-sm">🎉 EXCITING NEWS!</span>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-            I've Been Featured!
-          </h3>
-
-          {/* Article Image */}
-          <div className="relative group cursor-pointer">
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-            <div className="relative overflow-hidden rounded-2xl">
-              <img
-                src="/image.png"
-                alt="Featured Article"
-                className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-600 text-sm">
-            Check out my latest feature highlighting my journey as a tech innovator!
-          </p>
-
-          {/* CTA Button */}
-          <a
-            href="https://www.dailyecho.co.uk/news/25300681.southampton-student-launches-ai-powered-food-safety-app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsVisible(false)}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-400 to-purple-400 text-white font-semibold px-6 py-3 rounded-full hover:from-pink-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            <span>Read Article</span>
-            <ExternalLink className="h-4 w-4" />
-          </a>
+        {/* Badge */}
+        <div className="flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 rounded-full px-4 py-1.5 w-fit">
+          <Trophy size={13} className="text-amber-400" />
+          <span className="font-mono text-xs text-amber-400 font-semibold tracking-wider">IN THE NEWS</span>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-1/2 left-4 w-2 h-2 bg-pink-300 rounded-full animate-ping opacity-50"></div>
-        <div className="absolute bottom-8 right-8 w-1 h-1 bg-purple-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '1s' }}></div>
+        {/* Heading */}
+        <div>
+          <h3 className="font-display text-2xl font-semibold gradient-text">I've Been Featured!</h3>
+          <p className="text-ink-400 text-sm mt-1">Tech innovator spotlight — Daily Echo</p>
+        </div>
+
+        {/* Image */}
+        <div className="relative overflow-hidden rounded-xl h-36 group cursor-pointer">
+          <img
+            src="/image.png"
+            alt="Featured Article"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-arc-surface/60 to-transparent" />
+        </div>
+
+        {/* CTA */}
+        <a
+          href="https://www.dailyecho.co.uk/news/25300681.southampton-student-launches-ai-powered-food-safety-app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setIsVisible(false)}
+          className="flex items-center justify-center gap-2 bg-gradient-to-r from-rose-400 to-violet-500 text-white font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity text-sm w-full"
+        >
+          Read Article <ExternalLink size={14} />
+        </a>
       </div>
     </div>
   );
-};
-
-export default RecognitionPopup;
+}

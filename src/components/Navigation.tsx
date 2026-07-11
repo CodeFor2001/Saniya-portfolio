@@ -1,83 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Menu, X } from 'lucide-react';
+import { Zap, Menu, X } from 'lucide-react';
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const NAV_ITEMS = [
+  { path: '/',         label: 'Home'     },
+  { path: '/projects', label: 'Projects' },
+  { path: '/resume',   label: 'Resume'   },
+];
+
+export default function Navigation() {
+  const [isOpen, setIsOpen]       = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
   const location = useLocation();
 
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/resume', label: 'Resume' },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-pink-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-arc-base/90 backdrop-blur-md border-b border-arc-border'
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <Heart className="h-6 w-6 text-pink-500 group-hover:text-pink-600 transition-colors duration-300" />
-            <span className="font-bold text-gray-800 text-lg group-hover:text-pink-600 transition-colors duration-300">
-              Portfolio
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-rose-400 to-violet-500 flex items-center justify-center shadow-glow-rose">
+              <Zap size={14} className="text-white" />
+            </div>
+            <span className="font-display font-semibold text-ink-100 text-lg tracking-tight group-hover:text-rose-400 transition-colors">
+              Saniya
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-pink-600 ${
-                  location.pathname === item.path
-                    ? 'text-pink-600'
-                    : 'text-gray-600'
-                }`}
-              >
-                {item.label}
-                {location.pathname === item.path && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full"></div>
-                )}
-              </Link>
-            ))}
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_ITEMS.map(({ path, label }) => {
+              const active = location.pathname === path;
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`relative text-sm font-medium transition-colors duration-200 pb-0.5 ${
+                    active ? 'text-rose-400' : 'text-ink-400 hover:text-ink-100'
+                  }`}
+                >
+                  {label}
+                  {active && <span className="nav-underline" />}
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Mobile Navigation Button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-pink-50 transition-colors duration-300"
+            className="md:hidden p-2 rounded-lg text-ink-400 hover:text-ink-100 hover:bg-arc-hover transition-colors"
+            aria-label="Toggle menu"
           >
-            {isOpen ? (
-              <X className="h-6 w-6 text-gray-600" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-600" />
-            )}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2 animate-fadeIn">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-pink-50 hover:text-pink-600 ${
-                  location.pathname === item.path
-                    ? 'text-pink-600 bg-pink-50'
-                    : 'text-gray-600'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="md:hidden pb-4 space-y-1 mobile-nav-enter border-t border-arc-border mt-1 pt-3">
+            {NAV_ITEMS.map(({ path, label }) => {
+              const active = location.pathname === path;
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    active
+                      ? 'text-rose-400 bg-arc-hover'
+                      : 'text-ink-400 hover:text-ink-100 hover:bg-arc-hover'
+                  }`}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
     </nav>
   );
-};
-
-export default Navigation;
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Github, Linkedin, Brain, Cpu, Code, FileText } from 'lucide-react';
 
 const EXPERTISE = [
@@ -64,18 +65,18 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <a
-              href="/projects"
+            <Link
+              to="/projects"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-400 to-violet-500 text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity shadow-glow-rose"
             >
               Projects <ArrowRight size={15} />
-            </a>
-            <a
-              href="/resume"
+            </Link>
+            <Link
+              to="/resume"
               className="inline-flex items-center gap-2 arc-card text-ink-200 font-semibold px-6 py-3 rounded-xl hover:text-violet-400 hover:border-violet-400/40 transition-colors"
             >
               <FileText size={15} /> Resume
-            </a>
+            </Link>
             <div className="flex items-center gap-2 ml-1">
               <a href="https://github.com/CodeFor2001" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-violet-400 transition-colors">

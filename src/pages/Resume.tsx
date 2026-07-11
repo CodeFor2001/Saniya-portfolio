@@ -1,71 +1,70 @@
-import React, { useState } from 'react';
-import { Download, Eye, X as XIcon, Award, Briefcase, GraduationCap, User } from 'lucide-react';
+import React from 'react';
+import { Download, User } from 'lucide-react';
 
-const Resume = () => {
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const pdfUrl = '/SaniyaInamdar_resume.pdf';
+const pdfUrl = '/SaniyaInamdar_resume.pdf';
 
+export default function Resume() {
   return (
-    <div className="pt-16 min-h-screen">
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto space-y-12">
+    <div className="min-h-screen circuit-bg">
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto space-y-10">
 
-          {/* Header and Actions */}
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-2">
-              Resume
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full mb-4"></div>
-            <p className="text-lg text-gray-600 mb-8">
-              My professional journey and achievements
-            </p>
-
-            <div className="flex justify-center space-x-4">
-              {/* Download PDF */}
+          {/* Header */}
+          <div>
+            <p className="mono-label mb-3">[ CV ]</p>
+            <div className="flex items-end justify-between flex-wrap gap-4">
+              <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-100">Resume</h1>
               <a
                 href={pdfUrl}
                 download
-                className="flex items-center space-x-2 bg-gradient-to-r from-pink-400 to-purple-400 text-white font-semibold px-6 py-3 rounded-full
-                           hover:from-pink-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-400 to-violet-500 text-white font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity shadow-glow-violet text-sm"
               >
-                <Download className="h-5 w-5" />
-                <span>Download PDF</span>
+                <Download size={15} />
+                Download PDF
               </a>
-
-
             </div>
           </div>
 
           {/* Professional Summary */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-pink-100">
-            <div className="flex items-center space-x-3 mb-4">
-              <User className="h-6 w-6 text-pink-500" />
-              <h2 className="text-2xl font-bold text-gray-800">Professional Summary</h2>
+          <div className="arc-card p-7">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: 'rgba(232,121,160,0.12)', border: '1px solid rgba(232,121,160,0.3)' }}>
+                <User size={15} className="text-rose-400" />
+              </div>
+              <h2 className="font-display text-xl font-semibold text-ink-100">Professional Summary</h2>
             </div>
-            <p className="text-gray-700 leading-relaxed">
-              Results-driven software engineer and data specialist pursuing an MSc in Computer Science at the University of Southampton, with 3 years of hands-on experience delivering production-grade solutions for high-growth startups and a global semiconductor leader. Blend deep full-stack expertise (Node.js, React, Flutter, Docker) with enterprise-scale data engineering and analytics (SAP BW/4HANA, Hadoop, Tableau) to build scalable platforms, lead cost-saving migrations, and translate complex datasets into decisive business insights. Comfortable operating across the ML lifecycle from RAG-powered LLM applications to GPU-accelerated time-series models and known for shipping features that raise efficiency, compliance, and user satisfaction. Recognised for cross-functional leadership, rapid prototyping, and fast learner; now seeking a role where advanced software craftsmanship and data-driven thinking can accelerate product innovation and growth.
+            <div className="h-px w-full mb-5" style={{ background: 'linear-gradient(90deg, rgba(232,121,160,0.4), transparent)' }} />
+            <p className="text-ink-400 leading-relaxed text-[0.9rem]">
+              Results-driven software engineer and data specialist with an{' '}
+              <span className="text-ink-200 font-medium">MSc in Computer Science from the University of Southampton</span>,
+              and 3+ years of hands-on experience delivering production-grade solutions for high-growth startups and a global semiconductor leader.
+              Blends deep full-stack expertise (Node.js, React, Flutter, Docker) with enterprise-scale data engineering (SAP BW/4HANA, Hadoop, Tableau)
+              to build scalable platforms, lead cost-saving migrations, and translate complex datasets into decisive business insights.
+              Comfortable operating across the ML lifecycle — from{' '}
+              <span className="text-violet-400 font-medium">RAG-powered LLM applications</span>{' '}
+              and{' '}
+              <span className="text-rose-400 font-medium">agentic AI systems</span>{' '}
+              to GPU-accelerated time-series models.
+              Recognised for cross-functional leadership, rapid prototyping, and a fast-learner mindset;
+              seeking a role where advanced software craftsmanship and data-driven thinking accelerate product innovation and growth.
             </p>
           </div>
-          
-          {/* Inline PDF Preview Section */}
-          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-pink-100">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Resume Preview</h2>
-            
-              <div className="w-full h-[60vh] rounded-lg overflow-hidden shadow-inner">
-                <iframe
-                  // hide default PDF toolbar/sidebar via URL hash params
-                  src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                  title="Résumé preview"
-                  className="w-full h-full border-none"
-                />
-              </div>
-            
+
+          {/* PDF Preview */}
+          <div className="arc-card p-6">
+            <h2 className="font-display text-xl font-semibold text-ink-100 mb-5">Preview</h2>
+            <div className="w-full rounded-xl overflow-hidden" style={{ height: '65vh', border: '1px solid rgba(167,139,250,0.15)' }}>
+              <iframe
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                title="Résumé preview"
+                className="w-full h-full border-none bg-white"
+              />
+            </div>
           </div>
 
         </div>
       </section>
     </div>
   );
-};
-
-export default Resume;
+}

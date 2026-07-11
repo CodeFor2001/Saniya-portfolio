@@ -10,11 +10,14 @@ function App() {
     <Router>
       <div className="min-h-screen bg-arc-base">
         <Navigation />
+        {/* md:pl-16 = sidebar width on desktop; pb-16 = mobile bottom bar clearance */}
+        <div className="md:pl-16 pb-16 md:pb-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/resume" element={<Resume />} />
         </Routes>
+        </div>
       </div>
     </Router>
   );

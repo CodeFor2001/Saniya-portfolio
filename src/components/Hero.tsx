@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Github, Linkedin, Brain, Cpu, Code } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Brain, Cpu, Code, FileText } from 'lucide-react';
 
 const EXPERTISE = [
   { icon: Brain, label: 'Machine Learning', color: 'text-rose-400',   border: 'border-rose-400/30',   bg: 'bg-rose-400/8' },
@@ -62,30 +62,28 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="flex items-center gap-4 pt-2">
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="/projects"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-400 to-violet-500 text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity shadow-glow-rose"
             >
-              View Projects <ArrowRight size={16} />
+              Projects <ArrowRight size={15} />
             </a>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/CodeFor2001"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-violet-400 transition-colors"
-              >
-                <Github size={18} />
+            <a
+              href="/resume"
+              className="inline-flex items-center gap-2 arc-card text-ink-200 font-semibold px-6 py-3 rounded-xl hover:text-violet-400 hover:border-violet-400/40 transition-colors"
+            >
+              <FileText size={15} /> Resume
+            </a>
+            <div className="flex items-center gap-2 ml-1">
+              <a href="https://github.com/CodeFor2001" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-violet-400 transition-colors">
+                <Github size={17} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/saniya-inamdar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-rose-400 transition-colors"
-              >
-                <Linkedin size={18} />
+              <a href="https://www.linkedin.com/in/saniya-inamdar/" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl arc-card flex items-center justify-center text-ink-400 hover:text-rose-400 transition-colors">
+                <Linkedin size={17} />
               </a>
             </div>
           </div>
@@ -110,11 +108,6 @@ export default function Hero() {
                 alt="Saniya Inamdar"
                 className="w-full h-full object-cover"
               />
-            </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-3 -right-3 arc-card px-3 py-2 flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-glow" />
-              <span className="font-mono text-xs text-ink-200">Available</span>
             </div>
           </div>
         </div>

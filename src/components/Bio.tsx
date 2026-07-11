@@ -25,10 +25,10 @@ const Bio = () => {
   const artisticInterests = [
     { icon: Heart, label: 'Love for code', color: 'text-pink-500' },
     { icon: Star, label: 'Always learning', color: 'text-yellow-500' },
-    { icon: Coffee, label: 'Food enthusiast', color: 'text-amber-600' },
-    { icon: Palette, label: 'Art lover', color: 'text-purple-500' },
-    { icon: Music, label: 'Music inspiration', color: 'text-blue-500' },
-    { icon: BookOpen, label: 'Design thinking', color: 'text-green-500' },
+    { icon: Palette, label: 'Knife painting', color: 'text-purple-500' },
+    { icon: Coffee, label: 'Food explorer', color: 'text-amber-600' },
+    { icon: Music, label: 'Music', color: 'text-blue-500' },
+    { icon: BookOpen, label: 'Agentic AI', color: 'text-green-500' },
   ];
 
   return (
@@ -86,18 +86,16 @@ const Bio = () => {
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border-l-4 border-pink-400 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-pink-100/30 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
                   <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                    Hey there! I'm a <span className="text-pink-500 font-semibold">tech-savvy artist</span> who believes that code can be both powerful and beautiful. 
-                    With a passion for creating <span className="text-purple-500 font-semibold">intuitive user experiences</span> and solving complex problems, 
-                    I've spent years turning <span className="text-blue-500 font-semibold">creative ideas</span> into digital reality.
+                    I'm a <span className="text-pink-500 font-semibold">Software Engineer</span> with a background spanning machine learning research, backend systems, and agentic AI.
+                    I've built everything from a <span className="text-purple-500 font-semibold">multitasking kernel in C</span> to LLM-orchestrated agent fleets — and I love finding the thread that connects low-level systems thinking with <span className="text-blue-500 font-semibold">high-level intelligence</span>.
                   </p>
                 </div>
-                
+
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border-l-4 border-purple-400 relative overflow-hidden">
                   <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-br from-purple-100/30 to-transparent rounded-full translate-y-8 -translate-x-8"></div>
                   <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                    When I'm not coding, you'll find me exploring the latest in <span className="text-purple-500 font-semibold">AI innovations</span>, 
-                    training <span className="text-blue-500 font-semibold">machine learning models</span>, or sipping coffee while sketching out my next big project. 
-                    I believe in the power of technology to create <span className="text-pink-500 font-semibold">meaningful connections</span> and positive change.
+                    Outside of work, I'm exploring the frontier of <span className="text-purple-500 font-semibold">agentic AI</span>, picking up knife painting (with actual palette knives), or building something I've never tried before.
+                    I was <span className="text-blue-500 font-semibold">featured in the press</span> for launching an AI-powered food safety app — and that curiosity to solve real problems hasn't slowed down since.
                   </p>
                 </div>
               </div>
@@ -166,9 +164,9 @@ const Bio = () => {
                     
                     <div>
                       <h3 className="text-3xl font-bold text-gray-800 mb-2">Saniya Inamdar</h3>
-                      <p className="text-pink-600 font-semibold text-lg">Creative Developer & Digital Artist</p>
+                      <p className="text-pink-600 font-semibold text-lg">Software Engineer · AI & ML</p>
                       <p className="text-gray-600 text-sm mt-3 italic">
-                        "Making the web a more beautiful place, one line of code at a time"
+                        "From kernels to agent fleets — curiosity is the constant"
                       </p>
                       
                       {/* Artistic Signature */}

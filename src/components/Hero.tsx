@@ -17,9 +17,9 @@ const Hero = () => {
   }, []);
 
   const expertiseAreas = [
-    { icon: Code, label: 'Development', color: 'text-pink-500', bgGradient: 'from-pink-400/20 to-rose-400/20' },
-    { icon: Brain, label: 'Machine Learning', color: 'text-blue-500', bgGradient: 'from-blue-400/20 to-cyan-400/20' },
-    { icon: Cpu, label: 'IoT', color: 'text-purple-500', bgGradient: 'from-purple-400/20 to-indigo-400/20' },
+    { icon: Brain, label: 'Machine Learning', color: 'text-pink-500', bgGradient: 'from-pink-400/20 to-rose-400/20' },
+    { icon: Cpu, label: 'Agentic AI', color: 'text-blue-500', bgGradient: 'from-blue-400/20 to-cyan-400/20' },
+    { icon: Code, label: 'Full-Stack Dev', color: 'text-purple-500', bgGradient: 'from-purple-400/20 to-indigo-400/20' },
   ];
 
   const FloatingArtElement = ({ children, delay = 0, className = "", duration = "6s" }) => (
@@ -136,10 +136,10 @@ const Hero = () => {
               {/* Artistic Subtitle with Creative Typography */}
               <div className="relative mb-8">
                 <p className="text-2xl md:text-3xl text-gray-600 font-light mb-2">
-                  A passionate <span className="text-pink-500 font-semibold">artist</span> & <span className="text-purple-500 font-semibold">developer</span>
+                  Software Engineer · <span className="text-pink-500 font-semibold">AI & ML</span> · <span className="text-purple-500 font-semibold">Agentic Systems</span>
                 </p>
                 <p className="text-lg md:text-xl text-gray-500 italic">
-                  crafting beautiful digital experiences with code & creativity
+                  building intelligent systems from the ground up — kernels to agent fleets
                 </p>
                 
                 {/* Decorative Line Art */}
@@ -201,8 +201,8 @@ const Hero = () => {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400"></div>
                 
                 <p className="text-lg text-gray-700 leading-relaxed relative z-10">
-                  I blend <span className="text-pink-500 font-semibold">creativity</span> with <span className="text-purple-500 font-semibold">technology</span> to build innovative solutions that make a difference. 
-                  From elegant web applications to intelligent systems, I love bringing <span className="text-blue-500 font-semibold">ideas to life</span> through the art of code.
+                  I build <span className="text-pink-500 font-semibold">intelligent systems</span> that solve real problems — from ML-powered computer vision to <span className="text-purple-500 font-semibold">agentic AI platforms</span> that monitor enterprise agent fleets.
+                  I've written multitasking kernels in C and trained transformers in PyTorch, and I love finding the thread that connects <span className="text-blue-500 font-semibold">low-level systems thinking</span> with high-level intelligence.
                 </p>
                 
                 {/* Artistic Signature */}
